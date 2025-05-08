@@ -1,6 +1,0 @@
-{
-  "memory_bank_size": 1024,
-  "memory_bank_type": "volatile",
-  "initial_memory_state": [],
-  "allow_persistence": false
-}
