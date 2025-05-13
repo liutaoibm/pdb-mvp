@@ -1,0 +1,139 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+
+.btn-create-product {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 5px;
+}
+
+.search-bar button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.repository-button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.repository-button.active {
+    border-bottom: 3px solid #007bff;
+}
+
+.product-list {
+    flex: 1;
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+}
+
+.search-result p {
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.search-result ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.search-result ul li {
+    margin: 5px 0;
+}
+
+.graph-container {
+    flex: 2;
+    margin-left: 20px;
+    height: 450px; /* Setting a more balanced height for the graph */
+}
+
+.bill-of-materials {
+    margin-top: 20px;
+}
+
+.bill-of-materials table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bill-of-materials th,
+.bill-of-materials td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}

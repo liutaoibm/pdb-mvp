@@ -1,11 +1,13 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Create and setup SQLite database
-let db = new sqlite3.Database(':memory:', (err) => {
+const dbPath = path.resolve(__dirname, 'database.sqlite');
+let db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error(err.message);
   }
@@ -71,6 +73,30 @@ app.delete('/products/:id', (req, res) => {
   });
 });
 
+const products = [];
+
+app.get('/api/products', (req, res) => {
+  db.all('SELECT * FROM products', [], (err, rows) => {
+    if (err) {
+      res.status(400).send(err.message);
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+app.post('/api/products', (req, res) => {
+  const { name, description, price } = req.body;
+  db.run('INSERT INTO products(name, description, price) VALUES(?, ?, ?)', [name, description, price], function (err) {
+    if (err) {
+      res.status(400).send(err.message);
+      return;
+    }
+    res.json({ id: this.lastID });
+  });
+});
+
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Connected to the SQLite database at ${dbPath}.`);
+  console.log(`Server running at http://localhost:${port}`);
 });
