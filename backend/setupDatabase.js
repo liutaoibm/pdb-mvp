@@ -1,28 +1,58 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const { createLogger, LogLevel } = require('common-logging-lib');
+
+// Create logger instance
+const logger = createLogger({
+  minLevel: LogLevel.DEBUG,
+  defaultContext: {
+    app: 'product-definition-builder-db-setup',
+    version: '1.0.0'
+  },
+  console: {
+    colorize: true,
+    format: 'text'
+  }
+});
 
 // Path to the SQLite database
 const dbPath = path.resolve(__dirname, 'database.sqlite');
 
 // Create and setup SQLite database
-let db = new sqlite3.Database(dbPath, (err) => {
+let db = new sqlite3.Database(dbPath, async (err) => {
   if (err) {
-    console.error(err.message);
+    await logger.error('Database connection error', { error: err.message });
+    process.exit(1);
   }
-  console.log(`Connected to the SQLite database at ${dbPath}.`);
+  await logger.info('Database connected', { path: dbPath });
 });
 
 // Create table schema
-db.run('CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY, name TEXT, description TEXT, price REAL)', (err) => {
+db.run('CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY, name TEXT, description TEXT, price REAL)', async (err) => {
   if (err) {
-    console.error(err.message);
+    await logger.error('Table creation error', { error: err.message });
+    await logger.close();
+    process.exit(1);
   } else {
-    console.log('Created products table.');
+    await logger.info('Products table created or verified');
   }
-  db.close((err) => {
+  
+  db.close(async (err) => {
     if (err) {
-      console.error(err.message);
+      await logger.error('Error closing database', { error: err.message });
+    } else {
+      await logger.info('Database connection closed');
     }
-    console.log('Closed the database connection.');
+    await logger.close();
   });
+});
+
+// Handle unexpected errors
+process.on('uncaughtException', async (error) => {
+  await logger.error('Uncaught exception', { 
+    error: error.message,
+    stack: error.stack
+  });
+  await logger.close();
+  process.exit(1);
 });

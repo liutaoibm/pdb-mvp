@@ -13,8 +13,12 @@
 Identification of any technical constraints for the project.
 
 ## Dependencies
-List of dependencies required for the project.
+- Next.js for frontend
+- Node.js and Express for backend
+- SQLite for database
+- common-logging-lib for standardized logging
 
 ## Tool Usage Patterns
--use github mcp server to manage github access
--use github issues to manage tickets
+- Use github mcp server to manage github access
+- Use github issues to manage tickets
+- Use common-logging-lib for standardized logging across backend services

@@ -13,9 +13,13 @@ the frontend app will use
 the backend app will use
 -latest node.js
 -sqlite in memory db
+-common-logging-lib for standardized logging
 
 ## Design Patterns in Use
-it's following microservice and rest api patterns.
+- Microservice architecture
+- REST API patterns
+- Repository pattern for data access
+- Standardized logging patterns using common-logging-lib
 
 ## Component Relationships
 the frontend app is calling apis from backend app to read/update data.

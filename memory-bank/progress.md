@@ -7,6 +7,7 @@
 - Implemented REST API for CRUD operations on products.
 - Implemented comprehensive CSS styling for the define-product page to match the reference design.
 - Enhanced define-product.js with improved structure and dynamic label count.
+- Refactored backend logging to use standardized common-logging-lib from https://github.com/liutaoibm/common-lib.
 Documenting the functionalities that currently work in the project.
 
 ## What's Left to Build
@@ -23,5 +24,6 @@ No known issues at this stage.
 Listing any known issues or bugs in the project.
 
 ## Evolution of Project Decisions
-Initial setup and configurations have been successfully completed.
+- Initial setup and configurations have been successfully completed.
+- Implemented standardized logging across backend services to ensure consistent log formats, levels, and output channels.
 Documenting the evolution and changes in project decisions over time.

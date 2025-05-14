@@ -12,7 +12,7 @@
 -   Use TypeScript axios template
 -   Prefer composition over inheritance
 -   Use repository pattern for data access
--   Use common logging from https://github.com/liutaoibm/common-lib
+-   Use common logging from https://github.com/liutaoibm/common-lib and make sure always using the latest version
 
 ## Testing Standards
 
